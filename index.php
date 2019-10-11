@@ -4,7 +4,8 @@
 de acesso indevido */
 session_start();
 
-require 'funcoes.php';
+require_once 'funcoes.php';
+require_once 'tarefas.modelo.php';
 
 if (empty($_SESSION['usuario']))
 {
@@ -13,6 +14,8 @@ if (empty($_SESSION['usuario']))
 	header("Location: login.php");
 }
 
+// se chegou aqu, eh pq o usuario esta logado
+$tarefas = buscarTarefas($_SESSION['usuario']);
 
 ?>
 <!DOCTYPE html>
@@ -26,5 +29,14 @@ if (empty($_SESSION['usuario']))
 		<?= $_SESSION['usuario'] ?>
 	</h1>
 	<a href="logout.php">Sair do sistema</a>
+
+	<h2>Tarefas</h2>
+
+	<?php foreach ($tarefas as $t): ?>
+
+		<p><?= $t['descricao'] ?></p>
+
+	<?php endforeach; ?>
+
 </body>
 </html>

@@ -2,7 +2,7 @@
 
 session_start();
 
-require 'funcoes.php';
+require_once 'funcoes.php';
 
 $mensagem = '';
 
