@@ -6,6 +6,12 @@ require 'funcoes.php';
 
 $mensagem = '';
 
+if (!empty($_SESSION['usuario']))
+{
+	// o usuario ja esta logado
+	header("Location: index.php");
+}
+
 if (!empty($_POST['usuario']))
 {
 
